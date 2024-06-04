@@ -42,7 +42,6 @@ public class UserService {
             System.out.println(userCreate.getBirthday());
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             user.setBirthday(dateFormat.parse(userCreate.getBirthday()));
-            user.setIsDeleted(userCreate.isDeleted());
             Role role = roleRepository.findById(userCreate.getRole().getRole_id())
                     .orElseThrow(() -> new RuntimeException("Role not found"));
             user.setRole(userCreate.getRole());
@@ -66,7 +65,6 @@ public class UserService {
             user.setLastName(userCreate.getLastName());
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             user.setBirthday(dateFormat.parse(userCreate.getBirthday()));
-            user.setIsDeleted(userCreate.isDeleted());
             user.setRole(userCreate.getRole());
             userRepository.save(user);
         }catch (Exception e){
