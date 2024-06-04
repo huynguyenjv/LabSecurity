@@ -79,7 +79,8 @@ public class UserService {
             User user = userRepository.findById(id).orElseThrow(
                     () -> new RuntimeException("Khong tim thay ID")
             );
-            userRepository.delete(user);
+            user.setIsDeleted(true);
+            userRepository.save(user);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
